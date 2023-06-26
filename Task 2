@@ -1,0 +1,43 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+bool alph(char c) {
+    return (c >= 'a' && c <= 'z') ||
+           (c >= 'A' && c <= 'Z') ||
+           (c >= '0' && c <= '9');
+}
+
+int find(const string& str) {
+    int maxLength = 0;
+    int Length = 0;
+
+    for (char c : str) {
+        if (alph(c)) {
+            Length++;
+        } else {
+            if (Length > maxLength) {
+                maxLength = Length;
+            }
+            Length = 0;
+        }
+    }
+
+    if (Length > maxLength) {
+        maxLength = Length;
+    }
+
+    return maxLength;
+}
+
+int main() {
+    string input;
+    cout << "Input string: ";
+    getline(cin, input);
+
+    int lw = find(input);
+    cout << "length of the longest word: " << lw << endl;
+
+    return 0;
+}
