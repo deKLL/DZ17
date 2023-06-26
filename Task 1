@@ -1,0 +1,23 @@
+#include <iostream>
+#include <string>
+
+int main() {
+    using namespace std;
+
+    string input;
+    cout << "ebter string: ";
+    getline(cin, input);
+
+    bool text = false;
+    for (char& c : input) {
+        if (text && c >= 'a' && c <= 'z') {
+            c -= 'a' - 'A';
+            text = false;
+        }
+        if (c == '.') {
+            text = true;
+        }
+    }
+    cout << "Result: " << input << endl;
+    return 0;
+}
